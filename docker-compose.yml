@@ -1,0 +1,18 @@
+versions: '3.8'
+service:
+  mysql:
+    image: mysql:latest
+    ports:
+     - "3306:3306"
+    enviromment:
+      MYSQL_ROOT_PASSWORD: 1234
+  phpadmin:
+    image: phpadmin/phpadmin:latest
+    ports:
+      - "80:80"
+    depends_on:
+      - mysql
+    enviromment:
+      PMA_HOST: mysql
+      MSQL_ROOT_PASSWORD: 1234
+
